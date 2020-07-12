@@ -1,0 +1,34 @@
+<h1 id="tableLabel">Offices</h1>
+
+<div *ngIf="offices" class="input-group mb-3">
+  <input [(ngModel)]="searchInputValue" type="text" class="form-control" placeholder="Search" aria-label="Office" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button" (click)="onSearch()">Search</button>
+  </div>
+</div>
+<p *ngIf="!offices"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="offices">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Address</th>
+      <th>Employees Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let office of offices.offices">
+      <td>{{ office.city }}</td>
+      <td><a [routerLink]="['/office-details', office.id]">{{ office.streetNumber }}, {{ office.street }}</a></td>
+      <td>{{ office.employeesCount }} <span *ngIf="office.isHeadQuarters" placement="top" ngbTooltip="Headquarters">&#8461;</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<ngb-pagination *ngIf="offices" [(page)]="offices.page"
+                [pageSize]="5"
+                [collectionSize]="offices.total" (pageChange)="onOfficePageChange($event)"></ngb-pagination>
+
+<a class="btn btn-primary" [routerLink]="['/office-create']">
+  Create office
+</a>

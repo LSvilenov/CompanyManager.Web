@@ -1,0 +1,35 @@
+<h1 id="tableLabel">Employees</h1>
+<div class="input-group mb-3">
+  <input [(ngModel)]="searchInputValue" type="text" class="form-control" placeholder="Search" aria-label="Employee name" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button" (click)="onSearch()">Search</button>
+  </div>
+</div>
+
+<p *ngIf="!employees"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Starting date</th>
+      <th>Experience level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees.employees">
+      <td>
+        <a [routerLink]="['/employee-details', employee.id]">{{ employee.firstName }} {{ employee.lastName }}</a>
+      </td>
+      <td>{{ employee.startingDate | date : 'dd-MMMM-yyyy' }}</td>
+      <td>{{ employee.experienceLevel }}</td>
+    </tr>
+  </tbody>
+</table>
+<ngb-pagination *ngIf="employees" [(page)]="employees.page"
+                [pageSize]="5"
+                [collectionSize]="employees.total" (pageChange)="onEmployeePageChange($event)"></ngb-pagination>
+
+<a class="btn btn-primary" [routerLink]="['/employee-create']">
+  Create employee
+</a>

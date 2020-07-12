@@ -1,0 +1,35 @@
+<h1>Company details</h1>
+
+<p *ngIf="!company"><em>Loading...</em></p>
+
+<dl class="row" *ngIf="company">
+  <dt class="col-sm-3">Name:</dt>
+  <dd class="col-sm-9">{{ company.name }}</dd>
+
+  <dt class="col-sm-3">Creation date:</dt>
+  <dd class="col-sm-9">{{ company.creationDate }}</dd>
+</dl>
+
+<h2 id="tableLabel" *ngIf="company">Offices:</h2>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="offices">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Address</th>
+      <th>EmployeesCount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let office of offices">
+      <td>{{ office.city }}</td>
+      <td><a [routerLink]="['/office-details', office.id]">{{ office.streetNumber }} {{ office.street }}</a></td>
+      <td>{{ office.employeesCount }} <span *ngIf="office.isHeadQuarters" placement="top" ngbTooltip="Headquarters">&#8461;</span></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a *ngIf="company" class="btn btn-primary" [routerLink]="['/company-edit', company.id]">
+  Edit company
+</a>

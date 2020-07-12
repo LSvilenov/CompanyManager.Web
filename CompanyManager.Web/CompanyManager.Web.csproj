@@ -1,0 +1,124 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\components\employee-create\employee-create.component.ts" />
+    <None Remove="ClientApp\src\app\components\employee-details\employee-details.component.ts" />
+    <None Remove="ClientApp\src\app\components\employee-edit\employee-edit.component.ts" />
+    <None Remove="ClientApp\src\app\components\employee-form\employee-form.component.ts" />
+    <None Remove="ClientApp\src\app\components\employee-list\employee-list.component.ts" />
+    <None Remove="ClientApp\src\app\components\office-create\office-create.component.ts" />
+    <None Remove="ClientApp\src\app\components\office-details\office-details.component.ts" />
+    <None Remove="ClientApp\src\app\components\office-edit\office-edit.component.ts" />
+    <None Remove="ClientApp\src\app\components\office-form\office-form.component.ts" />
+    <None Remove="ClientApp\src\app\components\office-list\office-list.component.ts" />
+    <None Remove="ClientApp\src\app\components\upload\upload.component.ts" />
+    <None Remove="ClientApp\src\app\models\company-listing-service.model" />
+    <None Remove="ClientApp\src\app\models\employee-create.model.ts" />
+    <None Remove="ClientApp\src\app\models\employee-details.model.ts" />
+    <None Remove="ClientApp\src\app\models\employee-listing-service.model.ts" />
+    <None Remove="ClientApp\src\app\models\employee-listing-view.model.ts" />
+    <None Remove="ClientApp\src\app\models\NewFile.txt" />
+    <None Remove="ClientApp\src\app\models\nomenclature-item.model.ts" />
+    <None Remove="ClientApp\src\app\models\office-create.model.ts" />
+    <None Remove="ClientApp\src\app\models\office-details.model.ts" />
+    <None Remove="ClientApp\src\app\models\office-listing-service.model.ts" />
+    <None Remove="ClientApp\src\app\models\office-listing-view.model.ts" />
+    <None Remove="ClientApp\src\app\services\employee.service.ts" />
+    <None Remove="ClientApp\src\app\services\geo.service.ts" />
+    <None Remove="ClientApp\src\app\services\image.service.ts" />
+    <None Remove="ClientApp\src\app\services\office.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompanyManager.Data\CompanyManager.Data.csproj" />
+    <ProjectReference Include="..\CompanyManager.Services\CompanyManager.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\components\employee-create\employee-create.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\employee-details\employee-details.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\employee-edit\employee-edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\employee-form\employee-form.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\employee-list\employee-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\office-create\office-create.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\office-details\office-details.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\office-edit\office-edit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\office-form\office-form.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\office-list\office-list.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\components\upload\upload.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\employee-create.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\employee-details.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\employee-listing-service.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\employee-listing-view.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\nomenclature-item.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\office-create.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\office-details.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\office-listing-service.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\office-listing-view.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\employee.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\geo.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\image.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\office.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

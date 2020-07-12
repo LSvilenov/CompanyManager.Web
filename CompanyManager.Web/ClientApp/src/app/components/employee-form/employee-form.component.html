@@ -1,0 +1,63 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="firstNameInput">First name</label>
+    <input type="text" class="form-control" id="firstNameInput" formControlName="firstName">
+  </div>
+  <div class="form-group">
+    <app-upload></app-upload>
+  </div>
+  <div class="form-group">
+    <label for="lastNameInput">Last name</label>
+    <input type="text" class="form-control" id="lastNameInput" formControlName="lastName">
+  </div>
+  <div class="form-group">
+    <label for="startingDateInput">Starting date</label>
+    <input type="date" class="form-control" id="startingDateInput" formControlName="startingDate">
+  </div>
+  <div class="form-group">
+    <label for="vacationDaysInput">Vacation days</label>
+    <input type="text"
+           class="form-control"
+           [ngClass]="{'is-invalid': vacationDays.touched && vacationDays.errors }"
+           id="vacationDaysInput"
+           formControlName="vacationDays">
+    <small *ngIf="vacationDays.touched && vacationDays.errors" class="form-text text-danger">Should be valid number.</small>
+  </div>
+  <div class="form-group">
+    <label for="salaryInput">Salary</label>
+    <input type="text"
+           class="form-control"
+           [ngClass]="{'is-invalid': salary.touched && salary.errors }"
+           id="salaryInput"
+           formControlName="salary">
+    <small *ngIf="salary.touched && salary.errors" class="form-text text-danger">Should be valid number.</small>
+  </div>
+  <div class="form-group">
+    <label for="experienceLevelInput">Experience level</label>
+    <select class="form-control" id="experienceLevelInput" formControlName="experienceLevel">
+      <option value="" disabled>Please select</option>
+      <option [ngValue]="1">Junior</option>
+      <option [ngValue]="2">Mid</option>
+      <option [ngValue]="3">Senior</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <ng-multiselect-dropdown name="company"
+                             [placeholder]="'Select company'"
+                             [data]="companies"
+                             formControlName="company"
+                             (onSelect)="onItemSelect($event)"
+                             (onDeSelect)="onItemDeSelect($event)"
+                             [settings]="dropdownSettingsSingle">
+    </ng-multiselect-dropdown>
+  </div>
+  <div class="form-group" [hidden]="!offices.length">
+    <ng-multiselect-dropdown name="officeIds"
+                             [placeholder]="'Select offices'"
+                             [data]="offices"
+                             formControlName="officeIds"
+                             [settings]="dropdownSettingsMulti">
+    </ng-multiselect-dropdown>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>

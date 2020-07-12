@@ -1,0 +1,12 @@
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="nameInput">Company name</label>
+        <input type="text" class="form-control" id="nameInput" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="creationDateInput">Date of creation</label>
+      <!--TODO: Fix date input in edit-->
+        <input type="date" class="form-control" id="creationDateInput" formControlName="creationDate">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

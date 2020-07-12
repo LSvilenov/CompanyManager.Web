@@ -1,0 +1,43 @@
+<h1>Office details</h1>
+
+<p *ngIf="!office"><em>Loading...</em></p>
+
+<dl class="row" *ngIf="office">
+  <dt class="col-sm-3">Company:</dt>
+  <dd class="col-sm-9"><a [routerLink]="['/company-details', office.companyId]">{{ office.companyName }}</a></dd>
+
+  <dt class="col-sm-3">City:</dt>
+  <dd class="col-sm-9">{{ office.city }}</dd>
+
+  <dt class="col-sm-3">Country:</dt>
+  <dd class="col-sm-9">{{ office.country }}</dd>
+
+  <dt class="col-sm-3">Address:</dt>
+  <dd class="col-sm-9">{{ office.streetNumber }}, {{ office.street }}</dd>
+</dl>
+
+<h2 id="tableLabel" *ngIf="employess">Employyes:</h2>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="employees">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Starting date</th>
+      <th>Experience level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>
+        <a [routerLink]="['/employee-details', employee.id]">{{ employee.firstName }} {{ employee.lastName }}</a>
+      </td>
+      <td>{{ employee.startingDate | date : 'dd-MMMM-yyyy' }}</td>
+      <td>{{ employee.experienceLevel }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<a *ngIf="office" class="btn btn-primary" [routerLink]="['/office-edit', office.id]">
+  Edit office
+</a>
